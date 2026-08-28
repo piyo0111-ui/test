@@ -31,9 +31,11 @@ jobs:
 
       - run: npm run build
 
-      # Requires Pages to be enabled once in Settings > Pages with
-      # "Source: GitHub Actions" (GITHUB_TOKEN cannot enable it itself).
       - uses: actions/configure-pages@v5
+        with:
+          # Turn Pages on (build type: GitHub Actions) if it is not enabled yet.
+          # Needs a public repo, or a plan that allows Pages on private ones.
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
